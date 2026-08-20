@@ -17,33 +17,26 @@ Check the individual mod's README or manifest for exact compatibility.
 
 ## What's in the Case
 
-| Mod | Description | Latest release |
+| Mod | Description | Releases |
 |---|---|---|
-| [tm35_metronome](mods/tm35_metronome) | Add gesture controls to overwrite the main touch controls. | [Releases](https://github.com/logie-github/TM-Case/releases?q=tm35_metronome) |
+| [tm35_metronome](mods/tm35_metronome) | Gesture-only touch controls — no on-screen D-pad. | [link](https://github.com/logie-github/TM-Case/releases?q=tm35_metronome) |
 
 ## Installation
 
-Download the mod you want from its [release](https://github.com/logie-github/TM-Case/releases)
-and install it using the normal Gen1Recomp mod installation process:
-extract the zip so the mod's folder lands under your game's `mods/`
-directory, then enable it in `options.lua` or the in-game mod manager.
+Grab the mod you want from [Releases](https://github.com/logie-github/TM-Case/releases),
+extract it into your game's `mods/` folder, and enable it in
+`options.lua` or the in-game mod manager.
 
-Individual mods may have additional configuration options or
-requirements — see the documentation included with each mod package.
+Some mods have their own extra setup — check the mod's README.
 
-## Repository structure
+## Layout
 
 ```
 mods/<mod_name>/     one folder per mod: manifest.json, README.md, source
-.github/workflows/   release automation (zip + publish on tagged pushes)
+.github/workflows/   zips a mod and publishes it as a Release on tag push
 ```
 
-Each mod is distributed separately with its own documentation, version
-information, requirements, and installation package. Source lives in this
-repo; packaged zips are published as [GitHub Release](https://github.com/logie-github/TM-Case/releases)
-assets under tags namespaced `<mod_name>-v<version>` (e.g.
-`tm35_metronome-v1.0.0`), so history stays text-only and every version of
-every mod stays independently downloadable.
+Source lives here; packaged zips live on [Releases](https://github.com/logie-github/TM-Case/releases),
+tagged `<mod_name>-v<version>` (e.g. `tm35_metronome-v1.0.0`).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the folder layout and how the
-release automation works.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for adding a new mod.
