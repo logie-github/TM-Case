@@ -1,0 +1,8 @@
+# Packaged mods are published as GitHub Release assets, not committed.
+*.zip
+*.7z
+*.rar
+*.tar.gz
+dist/
+
+.DS_Store

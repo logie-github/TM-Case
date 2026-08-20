@@ -1,0 +1,15 @@
+{
+  "id": "tm35_metronome",
+  "name": "TM35 Metronome",
+  "version": "1.0.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "UI",
+  "game_version": ">=0.0.0-0 <2.0.0",
+  "priority": 100,
+  "dependencies": [],
+  "optional_dependencies": [],
+  "conflicts": [],
+  "description": "Add gesture controls to overwrite the main touch controls."
+}
