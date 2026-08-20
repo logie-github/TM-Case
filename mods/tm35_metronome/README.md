@@ -1,6 +1,6 @@
 # TM35 Metronome
 
-Gesture-only touch controls. No on-screen D-pad — the whole screen is the input.
+Add gesture controls to overwrite the main touch controls.
 
 ## Controls
 
@@ -12,12 +12,12 @@ Gesture-only touch controls. No on-screen D-pad — the whole screen is the inpu
 
 ## Setup
 
-Turn off the touch overlay in OPTIONS → CONTROLS first — its buttons eat
+Turn off the touch overlay in OPTIONS → CONTROLS first, its buttons eat
 any touch that starts on them before this mod sees it. Then enable
 `tm35_metronome` under `mods` in `options.lua`, or through the F10 mod
 manager.
 
 ## Notes
 
-- A touch starting in the bottom-right corner reads as Start, not B —
-  bottom edge wins ties.
+- A touch starting in the bottom-right corner reads as Start, not B.
+  Bottom edge wins ties.

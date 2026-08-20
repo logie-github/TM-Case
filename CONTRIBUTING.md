@@ -11,7 +11,7 @@ mods/<mod_name>/
   main.lua        # entry point, plus any other source files it needs
 ```
 
-`<mod_name>` is the folder name and the manifest `id` — keep them
+`<mod_name>` is the folder name and the manifest `id`. Keep them
 identical, and **don't put `-v` in it** (see Tagging, below, for why).
 
 ## Tagging and releases
@@ -26,7 +26,7 @@ runs `.github/workflows/release.yml`, which:
 3. Publishes a GitHub Release for that tag with the zip attached, using
    the mod's own `README.md` as the release notes.
 
-The split is `TAG % "-v*"` / `TAG ## "*-v"` — the *last* `-v` in the tag
+The split is `TAG % "-v*"` / `TAG ## "*-v"`. The *last* `-v` in the tag
 divides name from version. A mod folder containing `-v` anywhere in its
 name breaks that split, which is why folder names avoid it.
 
@@ -44,13 +44,13 @@ git push origin tm35_metronome-v1.0.0
 ## What not to commit
 
 Packaged zips, built binaries, and anything large/regeneratable belong on
-the Release, not in git history — `.gitignore` already excludes common
+the Release, not in git history. `.gitignore` already excludes common
 archive extensions and `dist/`. Small static assets a mod actually ships
 (sprites, tiny audio clips) are fine to commit alongside its source.
 
 ## Multiple versions of the same mod
 
 Old releases stay published under their own tags
-(`<mod_name>-v1.0.0`, `<mod_name>-v1.1.0`, ...) — nothing needs deleting
+(`<mod_name>-v1.0.0`, `<mod_name>-v1.1.0`, ...). Nothing needs deleting
 when you cut a new one. The mod's folder in `main` always reflects the
 latest source; past zips remain retrievable from their release pages.
