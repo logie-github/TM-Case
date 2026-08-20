@@ -12,12 +12,7 @@ Add gesture controls to overwrite the main touch controls.
 
 ## Setup
 
-Turn off the touch overlay in OPTIONS → CONTROLS first, its buttons eat
-any touch that starts on them before this mod sees it. Then enable
-`tm35_metronome` under `mods` in `options.lua`, or through the F10 mod
-manager.
-
-## Notes
-
-- A touch starting in the bottom-right corner reads as Start, not B.
-  Bottom edge wins ties.
+Enable `tm35_metronome` under `mods` in `options.lua`, or through the F10
+mod manager. Then open the mod's options (F10) and set TOUCH INPUT to
+SWIPE. That switches the on-screen pad off for you, so it's one setting
+instead of two.
