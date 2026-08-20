@@ -6,25 +6,27 @@
 --   swipe and hold a direction -> that D-pad direction, held
 --
 -- Built on input.pointer (raw touch/mouse, first refusal to the on-screen
--- D-pad) and mod.input (source-safe GB button injection). The stock touch
--- overlay should be turned off in OPTIONS -> CONTROLS -- its virtual
--- buttons claim any touch that starts on them before this hook ever sees it.
+-- D-pad) and mod.input (source-safe GB button injection). The TOUCH INPUT
+-- option below switches the native on-screen pad off automatically when set
+-- to SWIPE, so there's one control instead of two to keep in sync.
 
 return function(mod)
+  mod.options:define({
+    { key = "mode", label = "TOUCH INPUT", type = "choice", default = "buttons",
+      choices = { { "BUTTONS", "buttons" }, { "SWIPE", "swipe" } } },
+  })
+
   -- Fractions of the game viewport, not raw pixels, so the thresholds hold
   -- steady across window sizes and orientations.
-  local EDGE_ZONE = 0.14          -- how wide the bottom/right edge strip is
-  local EDGE_SWIPE = 0.05         -- how far out of the edge strip counts as a swipe
-  local TAP_SLOP = 0.04           -- movement under this is still a "tap"
-  local DIRECTION_SWIPE = 0.06    -- movement past this commits to a held direction
+  local EDGE_ZONE = 0.14          -- how close to the bottom/right edge a swipe must start
+  local DIRECTION_SWIPE = 0.06    -- movement past this commits to a gesture instead of a tap
 
   -- viewport size, refreshed every frame by the render.hud hook below;
   -- love.graphics is the fallback for the first frame before that fires.
   local gameW, gameH = love.graphics.getWidth(), love.graphics.getHeight()
 
   -- one record per live LOVE touch/mouse id:
-  --   kind: "pending" (tap-or-swipe undecided), "direction", "edge_start",
-  --         "edge_b", or "consumed" (already dispatched, ignore the rest)
+  --   kind: "pending" (tap-or-swipe undecided), "direction", or "consumed"
   local pointers = {}
 
   local function dominantDirection(dx, dy)
@@ -48,41 +50,37 @@ return function(mod)
         return
       end
     end
-
-    local kind = "pending"
-    if ev.gameY >= gameH * (1 - EDGE_ZONE) then
-      kind = "edge_start"
-    elseif ev.gameX >= gameW * (1 - EDGE_ZONE) then
-      kind = "edge_b"
-    end
-    pointers[ev.id] = { kind = kind, startX = ev.gameX, startY = ev.gameY }
+    pointers[ev.id] = { kind = "pending", startX = ev.gameX, startY = ev.gameY }
   end
 
   local function onMoved(game, ev)
     local rec = pointers[ev.id]
-    if not rec or rec.kind == "consumed" then return end
+    if not rec or rec.kind ~= "pending" then return end
     local dx, dy = ev.gameX - rec.startX, ev.gameY - rec.startY
+    if math.sqrt(dx * dx + dy * dy) < DIRECTION_SWIPE * math.min(gameW, gameH) then
+      return
+    end
 
-    if rec.kind == "pending" then
-      -- Direction is decided once, at the first threshold crossing, and
-      -- held for the rest of the gesture -- redeciding on every subsequent
-      -- move would make a slightly wavering swipe flicker between D-pad
-      -- buttons.
-      if math.sqrt(dx * dx + dy * dy) >= DIRECTION_SWIPE * math.min(gameW, gameH) then
-        local btn = dominantDirection(dx, dy)
-        rec.kind = "direction"
-        rec.token = mod.input:press(game, btn)
-      end
-    elseif rec.kind == "edge_start" then
-      if (rec.startY - ev.gameY) >= EDGE_SWIPE * gameH then
-        mod.input:tap(game, "start")
-        rec.kind = "consumed"
-      end
-    elseif rec.kind == "edge_b" then
-      if (rec.startX - ev.gameX) >= EDGE_SWIPE * gameW then
-        mod.input:tap(game, "b")
-        rec.kind = "consumed"
-      end
+    -- What the swipe becomes depends on where it started, not just where
+    -- it's headed: only a start near the bottom edge can become Start, only
+    -- a start near the right edge can become B. Everything else, including
+    -- a swipe that starts in one of those strips but heads the other way,
+    -- is a normal held direction. Checked here (once, at the moment a tap
+    -- turns into a swipe) rather than at press time, so a plain tap that
+    -- happens to land near an edge still just fires A.
+    local horizontal = math.abs(dx) >= math.abs(dy)
+    local startedNearBottom = rec.startY >= gameH * (1 - EDGE_ZONE)
+    local startedNearRight = rec.startX >= gameW * (1 - EDGE_ZONE)
+
+    if startedNearBottom and not horizontal and dy < 0 then
+      mod.input:tap(game, "start")
+      rec.kind = "consumed"
+    elseif startedNearRight and horizontal and dx < 0 then
+      mod.input:tap(game, "b")
+      rec.kind = "consumed"
+    else
+      rec.kind = "direction"
+      rec.token = mod.input:press(game, dominantDirection(dx, dy))
     end
   end
 
@@ -95,8 +93,6 @@ return function(mod)
     elseif rec.kind == "pending" and not cancelled then
       mod.input:tap(game, "a")
     end
-    -- edge_start / edge_b that never crossed its swipe threshold, and
-    -- consumed pointers, resolve to nothing on release.
   end
 
   mod.hooks:wrap("input.pointer", function(_, game, ev)
@@ -113,8 +109,29 @@ return function(mod)
     return true
   end)
 
+  -- Keeps the native on-screen pad in sync with TOUCH INPUT: only reacts to
+  -- a change made through this row (lastMode starts as whatever the row
+  -- already reads, so boot never silently flips a player's existing TOUCH
+  -- PAD setting).
+  local lastMode = nil
+
   mod.hooks:wrap("render.hud", function(next, game, viewport)
     gameW, gameH = viewport.gameWidth, viewport.gameHeight
+
+    local mode = mod.options:get("mode") or "buttons"
+    if lastMode == nil then
+      lastMode = mode
+    elseif mode ~= lastMode then
+      lastMode = mode
+      local o = game.save and game.save.options
+      if o then
+        o.touchControls = type(o.touchControls) == "table" and o.touchControls or {}
+        o.touchControls.enabled = (mode ~= "swipe")
+        game:applyOptions(o)
+        game:writeOptions()
+      end
+    end
+
     return next(game, viewport)
   end)
 end
