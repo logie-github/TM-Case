@@ -19,7 +19,7 @@ Check the individual mod's README or manifest for exact compatibility.
 
 | Mod | Description | Releases |
 |---|---|---|
-| [tm35_metronome](mods/tm35_metronome) | Gesture-only touch controls — no on-screen D-pad. | [link](https://github.com/logie-github/TM-Case/releases?q=tm35_metronome) |
+| [tm35_metronome](mods/tm35_metronome) | Add gesture controls to overwrite the main touch controls. | [link](https://github.com/logie-github/TM-Case/releases?q=tm35_metronome) |
 
 ## Installation
 
@@ -27,7 +27,7 @@ Grab the mod you want from [Releases](https://github.com/logie-github/TM-Case/re
 extract it into your game's `mods/` folder, and enable it in
 `options.lua` or the in-game mod manager.
 
-Some mods have their own extra setup — check the mod's README.
+Some mods have their own extra setup. Check the mod's README.
 
 ## Layout
 
