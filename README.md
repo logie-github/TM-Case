@@ -13,28 +13,15 @@ and can be used independently unless its documentation states otherwise.
 - Pokémon Blue
 - Pokémon Yellow
 
+- Other games may work but all of these mods are designed for Gen 1 in mind. 
+
 Check the individual mod's README or manifest for exact compatibility.
 
 ## What's in the Case
 
 TM35 Metronome adds swipe controls. 
 
-## Installation
-
-Grab the mod you want from [Releases](https://github.com/logie-github/TM-Case/releases),
-extract it into your game's `mods/` folder, and enable it in
-`options.lua` or the in-game mod manager.
-
-Some mods have their own extra setup. Check the mod's README.
-
-## Layout
-
-```
-mods/<mod_name>/     one folder per mod: manifest.json, README.md, source
-.github/workflows/   zips a mod and publishes it as a Release on tag push
-```
-
 Source lives here; packaged zips live on [Releases](https://github.com/logie-github/TM-Case/releases),
 tagged `<mod_name>-v<version>` (e.g. `tm35_metronome-v1.0.0`).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for adding a new mod.
+AI Disclaimer: These mods are debugged and partially coded by AI. 
