@@ -17,9 +17,7 @@ Check the individual mod's README or manifest for exact compatibility.
 
 ## What's in the Case
 
-| Mod | Description | Releases |
-|---|---|---|
-| [tm35_metronome](mods/tm35_metronome) | Add gesture controls to overwrite the main touch controls. | [link](https://github.com/logie-github/TM-Case/releases?q=tm35_metronome) |
+TM35 Metronome adds swipe controls. 
 
 ## Installation
 
