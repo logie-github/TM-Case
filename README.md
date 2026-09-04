@@ -1,4 +1,4 @@
-# TM Case
+## TM Case
 
 TM Case is a collection of mods for Gen1Recomp, ranging from small
 quality-of-life improvements and optional cheats to more substantial
@@ -19,8 +19,9 @@ Check the individual mod's README or manifest for exact compatibility.
 
 ## What's in the Case
 
-TM35 Metronome adds swipe controls. 
-TM43 Sky Attack puta the dialogue box on the top of the screen. 
+- TM06 Toxic changes the default rival names to ASSHAT, BLUE, and GARY. 
+- TM35 Metronome adds swipe controls. 
+- TM43 Sky Attack puta the dialogue box on the top of the screen. 
 
 Source lives here; packaged zips live on [Releases](https://github.com/logie-github/TM-Case/releases),
 tagged `<mod_name>-v<version>` (e.g. `tm35_metronome-v1.0.0`).
