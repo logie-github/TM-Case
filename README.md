@@ -20,8 +20,9 @@ Check the individual mod's README or manifest for exact compatibility.
 ## What's in the Case
 
 - TM06 Toxic changes the default rival names to ASSHAT, BLUE, and GARY. 
-- TM35 Metronome adds swipe controls. 
-- TM43 Sky Attack puta the dialogue box on the top of the screen. 
+- TM35 Metronome adds swipe controls.
+- TM39 Swift replaces Oak's intro with Mom giving a quick start to the game.
+- TM43 Sky Attack puts the dialogue box on the top of the screen.
 
 Source lives here; packaged zips live on [Releases](https://github.com/logie-github/TM-Case/releases),
 tagged `<mod_name>-v<version>` (e.g. `tm35_metronome-v1.0.0`).
