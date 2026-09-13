@@ -19,7 +19,8 @@ Check the individual mod's README or manifest for exact compatibility.
 
 ## What's in the Case
 
-- TM06 Toxic changes the default rival names to ASSHAT, BLUE, and GARY. 
+- TM06 Toxic changes the default rival names to ASSHAT, BLUE, and GARY.
+- TM32 Double Team doubles Bill's PC storage from 12 boxes to 24.
 - TM35 Metronome adds swipe controls.
 - TM39 Swift replaces Oak's intro with Mom giving a quick start to the game.
 - TM43 Sky Attack puts the dialogue box on the top of the screen.
