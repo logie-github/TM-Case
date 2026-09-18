@@ -12,10 +12,11 @@ and can be used independently unless its documentation states otherwise.
 - Pokémon Red
 - Pokémon Blue
 - Pokémon Yellow
+- Pokemon Gold
+- Pokemon Silver
+- Pokemon Crystal
 
-- Other games may work but all of these mods are designed for Gen 1 in mind. 
-
-Check the individual mod's README or manifest for exact compatibility.
+Check the individual mod's README or manifest for exact coding references.
 
 ## What's in the Case
 
