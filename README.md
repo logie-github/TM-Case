@@ -12,11 +12,13 @@ and can be used independently unless its documentation states otherwise.
 - Pokémon Red
 - Pokémon Blue
 - Pokémon Yellow
+
+##Metronome swipe controls support for
 - Pokemon Gold
 - Pokemon Silver
 - Pokemon Crystal
 
-Check the individual mod's README or manifest for exact coding references.
+Check the individual mod's README or manifest for exact compatibility. 
 
 ## What's in the Case
 
