@@ -7,16 +7,7 @@ gameplay overhauls, letting you choose only what you want to change.
 Each mod is designed for [Gen1Recomp](https://github.com/bryanthaboi/gen1recomp)
 and can be used independently unless its documentation states otherwise.
 
-## Supported games
-
-- Pokémon Red
-- Pokémon Blue
-- Pokémon Yellow
-
-##Metronome swipe controls support for
-- Pokemon Gold
-- Pokemon Silver
-- Pokemon Crystal
+Mods will have a GBC release for Gen 1 & 2, and a separate release for Gen 3. 
 
 Check the individual mod's README or manifest for exact compatibility. 
 
@@ -27,6 +18,8 @@ Check the individual mod's README or manifest for exact compatibility.
 - TM35 Metronome adds swipe controls.
 - TM39 Swift replaces Oak's intro with Mom giving a quick start to the game.
 - TM43 Sky Attack puts the dialogue box on the top of the screen.
+
+ And more...
 
 Source lives here; packaged zips live on [Releases](https://github.com/logie-github/TM-Case/releases),
 tagged `<mod_name>-v<version>` (e.g. `tm35_metronome-v1.0.0`).
